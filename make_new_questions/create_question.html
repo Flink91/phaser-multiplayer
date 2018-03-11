@@ -1,0 +1,131 @@
+<html>
+
+<head>
+    <title>Create new Question</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="make_new_questions/create_questions.css" rel='stylesheet'>
+
+</head>
+
+<body>
+    <div class="container">
+        <div id="info">
+            <br>
+            <h1>Create new Question</h1>
+
+            <br>
+            <h2 id="errors-heading"></h2>
+            <p id="errors-list">
+
+                <p>Some description lorem ipsum dolor sit amet.</p>
+                <br>
+
+                <hr>
+                <h4>Your Question:</h4>
+                <form action="/new_question" method="post">
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="">Question:</span>
+                        </div>
+                        <input type="text" id="question" name="question" class="form-control" placeholder="How do I shot web?" aria-label="question" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="">Hint #1:</span>
+                        </div>
+                        <input type="text" id="tip1" name="tip1" class="form-control" placeholder="Give a small hint" aria-label="question" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="">Hint #2:</span>
+                        </div>
+                        <input type="text" id="tip2" name="tip2" class="form-control" placeholder="Give another hint" aria-label="question" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="">Solution:</span>
+                        </div>
+                        <input type="number" id="solution" name="solution" class="form-control" placeholder="Solution must be a number" aria-label="question" aria-describedby="basic-addon1">
+                    </div>
+                    <hr>
+
+                    <div>
+                        <h4>Tags:</h4>
+
+                        <div class="tag-buttons">
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons" id="difficulty">
+                                <label class="btn btn-outline-secondary">
+                                <input type="radio" name="easy" id="easy" autocomplete="off"> Easy
+                            </label>
+                                <label class="btn btn-outline-secondary active">
+                                <input type="radio" name="medium" id="medium" autocomplete="off"> Default
+                            </label>
+                                <label class="btn btn-outline-secondary">
+                                <input type="radio" name="hard" id="hard" autocomplete="off"> Hard
+                            </label>
+                            </div>
+
+                            <div class="btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-secondary">
+                              <input type="checkbox" type="radio" id="history" name="history" autocomplete="off"> History / Years
+                            </label>
+                            </div>
+                            <div class="btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-secondary">
+                            <input type="checkbox" type="radio" id="sports" name="sports" autocomplete="off"> Sports
+                        </label>
+                            </div>
+                            <div class="btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-secondary">
+                            <input type="checkbox" type="radio" id="science" name="science" autocomplete="off"> Science
+                        </label>
+                            </div>
+                            <div class="btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-secondary">
+                            <input type="checkbox" type="radio" id="media" name="media" autocomplete="off"> Media
+                        </label>
+                            </div>
+                            <div class="btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-secondary">
+                            <input type="checkbox" type="funny" id="funny" name="funny" autocomplete="off"> Funny
+                        </label>
+                            </div>
+                            <div class="btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-secondary">
+                            <input type="checkbox" type="nsfw" id="nsfw" name="nsfw" autocomplete="off"> NSFW
+                        </label>
+                            </div>
+                            <div class="btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-secondary">
+                            <input type="checkbox" type="radio" id="google" name="google" autocomplete="off"> Hard to Google
+                        </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear: both;"></div>
+
+                    <div style="display:block;margin-top:10px;">
+
+                        <!-- <input type="text" id="tags" name="tags" placeholder="Enter some tags" /> -->
+                        <br><br>
+                        <input type="submit" class="btn btn-primary btn-lg" value="Send" />
+                        <!-- <button type="submit" class="btn btn-primary btn-lg">Large button</button> -->
+                    </div>
+                </form>
+
+        </div>
+    </div>
+
+    <script src="client/js/lib/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

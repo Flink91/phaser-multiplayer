@@ -1,0 +1,164 @@
+p {
+    margin-bottom: 0px;
+}
+
+body {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+.row {
+    margin: 0;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
+#gameDiv {
+    display: none;
+    max-width: 100%;
+    /* max-height: calc(100vh - 220px); */
+    max-height: 100vh;
+}
+
+#debug {
+    display: block;
+    background: transparent;
+    color: #888;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 12px;
+    height: 150px;
+    position: relative;
+}
+
+#lobby {
+    position: relative;
+}
+
+#lobby_container {
+    display: none;
+}
+
+#lobby_list_options {
+    width: 100%;
+    padding: 20px;
+    position: absolute;
+    bottom: 0px;
+    background: #282D4F;
+    text-align: center;
+}
+
+#lobby_list {
+    height: 527px;
+    max-height: 527px;
+    overflow-y: auto;
+}
+
+#lobby_list table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#lobby_list table th {
+    background: #282D4F;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+#lobby_list table td,
+#lobby_list table th {
+    padding: 20px;
+    text-align: left;
+}
+
+#lobby_list table td:last-child,
+#lobby_list table th:last-child {
+    text-align: right;
+}
+
+#lobby_list table tr {
+    background: #f3f3f3;
+}
+
+#lobby_list table tr:nth-child(odd) {
+    background: #dadada;
+}
+
+#single_lobby_container {
+    display: none;
+}
+
+#single_lobby_container .main {
+    border: 5px solid black;
+    padding: 0;
+    box-sizing: border-box;
+    border-right-width: 0;
+}
+
+#single_lobby_container .aside {
+    color: white;
+    background: #282D4F;
+    padding: 15px;
+    border: 5px solid black;
+    box-sizing: border-box;
+}
+
+#single_lobby_container .aside .btn-group-toggle {
+    float: left;
+    padding: 5px;
+}
+
+#game {
+    height: 50vh;
+    width: 100%;
+    background: black;
+    position: relative;
+    color: white;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+#start_game_button {
+    display: none;
+    float: right;
+    display: block;
+}
+
+#game p {
+    padding: 5px;
+}
+
+#game span {
+    float: right;
+}
+
+#chat_box {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    display: block;
+    background: grey;
+}
+
+#chat_box input {
+    border: none;
+    padding: 10px;
+    margin: 20px;
+    width: 79%;
+}
+
+#player_list {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding-left: 0;
+    font-size: 12px;
+}

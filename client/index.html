@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="client/styles/game.css">
+
+<head>
+
+
+</head>
+
+<body>
+
+    <div id="gameDiv">
+    </div>
+
+    <div class="container">
+        <div id="debug"></div>
+    </div>
+
+    <div id="lobby">
+
+        <div id="lobby_container">
+            <div id="lobby_list">
+                <table id="lobby_list_table">
+                    <tr>
+                        <th>Game ID</th>
+                        <th>Players</th>
+                        <th>Join Game</th>
+                    </tr>
+                </table>
+            </div>
+            <div id="lobby_list_options">
+                <button id="btn_host_game" class="btn btn-default">Create new game</button>
+            </div>
+        </div>
+
+        <div id="single_lobby_container">
+            <div class="row">
+                <div class="col-8 col-8 main">
+                    <div id="game"></div>
+                    <div id="chat_box">
+
+                        <form action="">
+                            <div class="input-group">
+                                <input id="chat_box_input" type="text" class="form-control" placeholder="Chat message" aria-label="Chat message" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-success" type="submit">Send</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+                <div class="col-4 col-4 aside">
+
+                    <div>
+                        <h4>Tags:</h4>
+
+                        <div class="tag-buttons">
+                            <div class="btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-secondary">
+                                    <input type="checkbox" type="radio" id="history" name="history" autocomplete="off"> History / Years
+                                </label>
+                            </div>
+                            <div class="btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-secondary">
+                                    <input type="checkbox" type="radio" id="sports" name="sports" autocomplete="off"> Sports
+                                </label>
+                            </div>
+                            <div class="btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-secondary">
+                                    <input type="checkbox" type="radio" id="science" name="science" autocomplete="off"> Science
+                                </label>
+                            </div>
+                            <div class="btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-secondary">
+                                    <input type="checkbox" type="radio" id="media" name="media" autocomplete="off"> Media
+                                </label>
+                            </div>
+                            <div class="btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-secondary">
+                                    <input type="checkbox" type="funny" id="funny" name="funny" autocomplete="off"> Funny
+                                </label>
+                            </div>
+                            <div class="btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-secondary">
+                                    <input type="checkbox" type="nsfw" id="nsfw" name="nsfw" autocomplete="off"> NSFW
+                                </label>
+                            </div>
+                            <div class="btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-secondary">
+                                    <input type="checkbox" type="radio" id="google" name="google" autocomplete="off"> Hard to Google
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <button id="start_game_button" type="button" class="btn btn-danger btn-lg btn-block">Start Game</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <ul id="player_list">
+    </ul>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="room_name_modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Enter a Room Name</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="room_name">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="room_name_modal_submit">Create</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="player_name_modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Enter a name</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="player_name">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="player_name_modal_submit">Create</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="client/js/lib/phaser.js"></script>
+
+
+<!-- <script src="client/colide.js"></script>
+<script src="client/item.js"></script> -->
+<script src="client/js/states/Boot.js"></script>
+<script src="client/js/states/Preloader.js"></script>
+<script src="client/js/states/Lobby.js"></script>
+<script src="client/js/states/LobbyList.js"></script>
+<script src="client/js/states/Game.js"></script>
+
+
+<script src="client/js/entities/Entity.js"></script>
+<script src="client/js/entities/Player.js"></script>
+<script src="client/js/entities/ActionMessage.js"></script>
+<script src="client/js/entities/Timer.js"></script>
+
+<script src="client/js/util/GameManager.js"></script>
+<script src="client/js/util/GameUtil.js"></script>
+
+<!-- <script src="client/js/main.js"></script> -->
+
+<script type="text/javascript">
+    window.onload = function() {
+        var socket;
+        //	Create your Phaser game and inject it into the gameContainer div.
+        //	We did it in a window.onload event, but you can do it anywhere (requireJS load, anonymous function, jQuery dom ready, - whatever floats your boat)
+        canvas_width = window.innerWidth * window.devicePixelRatio;
+        canvas_height = window.innerHeight * window.devicePixelRatio;
+        var game = new Phaser.Game(canvas_width, canvas_height, Phaser.CANVAS, 'gameDiv', null, false, false);
+        //canvas_width, canvas_height, Phaser.CANVAS, 'gameDiv'
+        //	Add the States your game has.
+        //	You don't have to do this in the html, it could be done in your Boot state too, but for simplicity I'll keep it here.
+        game.state.add('Boot', BasicGame.Boot);
+        game.state.add('Preloader', BasicGame.Preloader);
+        game.state.add('MainMenu', BasicGame.MainMenu);
+        game.state.add('LobbyList', BasicGame.LobbyList);
+        game.state.add('Lobby', BasicGame.Lobby);
+        game.state.add('Game', BasicGame.Game);
+        gametmp = game;
+        //	Now start the Boot state.
+        game.state.start('Boot');
+
+    };
+</script>
+
+</html>
