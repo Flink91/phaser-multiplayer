@@ -14,6 +14,20 @@
     <div id="gameDiv">
     </div>
 
+    <div id="HUD">
+        <div class="container">
+            <h2>make guess</h2>
+            <form name="guessForm" action="javascript:guessForm(guess.value)">
+                <div class="">
+                    <input type="number" class="" id="guess">
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-success" type="submit">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div class="container">
         <div id="debug"></div>
     </div>
@@ -179,8 +193,8 @@
 <script src="client/js/entities/Player.js"></script>
 <script src="client/js/entities/ActionMessage.js"></script>
 <script src="client/js/entities/Timer.js"></script>
+<script src="client/js/entities/TurnManager.js"></script>
 
-<script src="client/js/util/GameManager.js"></script>
 <script src="client/js/util/GameUtil.js"></script>
 
 <!-- <script src="client/js/main.js"></script> -->

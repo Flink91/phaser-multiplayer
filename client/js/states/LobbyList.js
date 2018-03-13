@@ -31,8 +31,6 @@ BasicGame.LobbyList.prototype = {
 
     create: function() {
 
-        this.gameManager = new GameManager(this);
-
         this.createEnvironment();
 
         this.socketActions();

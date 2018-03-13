@@ -54,24 +54,26 @@ BasicGame.Game = function(game) {
         centerY: canvas_height / 2
     };
 
-    this.gameManager = new GameManager(this);
+    this.turnManager = 0;
 
     this.players_in_room;
     this.seatNumber;
-
-    this.turn;
     this.question_text;
+
 };
 
+/**
+ * The Loop
+ */
 BasicGame.Game.prototype = {
 
     init: function(players_in_room) {
+        this.turnManager = new BasicGame.TurnManager(this);
         $('#gameDiv').fadeIn();
         console.log("Game State");
         this.players_in_room = players_in_room;
         this.seatNumber = this.players_in_room.indexOf(socket.id);
 
-        this.turn = 0;
     },
 
     preload: function() {},
@@ -81,7 +83,12 @@ BasicGame.Game.prototype = {
         this.createEnvironment();
         this.createSeats();
         this.socketActions();
-        socket.emit('get_question', socket.id);
+
+        var self = this;
+        setTimeout(function() {
+            self.turnManager.nextTurn();
+        }, 500);
+
 
     },
 
@@ -89,6 +96,7 @@ BasicGame.Game.prototype = {
 
     }
 };
+
 /**
  * Creates A game scene with a background and the floor. Creates Instances of the other entities
  */
@@ -97,22 +105,14 @@ BasicGame.Game.prototype.createEnvironment = function() {
     this.scale.maxWidth = this.game.width;
     this.scale.maxHeight = this.game.height;
 
-    // background color
     this.stage.backgroundColor = '#cccccc';
-
-    //---Create all the Objects----
-
-    //basic setup
     poker_table = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'poker_table');
     poker_table.anchor.x = 0.5;
     poker_table.anchor.y = 0.5;
     poker_table.scale.setTo(0.27, 0.27);
-
     this.game.world.bringToTop(poker_table);
-
-    //-----------------------------
-
 };
+
 
 BasicGame.Game.prototype.createPlayer = function(x, y, name, money) {
     this.player = new BasicGame.Player(this.game, x, y, name, money);
@@ -127,6 +127,7 @@ BasicGame.Game.prototype.socketActions = function() {
     var self = this;
     socket.on('get_question', function(question) {
         self.getQuestion(question);
+        self.showQuestionTop();
     });
 
 };
@@ -190,5 +191,17 @@ BasicGame.Game.prototype.showQuestionTop = function() {
 };
 
 BasicGame.Game.prototype.nextTurn = function() {
-    this.turn++;
+    console.log("next Turn");
+    this.turnManager.nextTurn();
 };
+
+BasicGame.Game.prototype.showGuessHUD = function() {
+    console.log("Guess HUD");
+    $('#HUD').fadeIn();
+
+};
+
+function guessForm(guess) {
+    $('#HUD').fadeOut();
+    console.log("guess:" + guess);
+}

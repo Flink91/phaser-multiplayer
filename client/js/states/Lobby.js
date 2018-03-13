@@ -35,7 +35,6 @@ BasicGame.Lobby.prototype = {
 
     create: function() {
 
-        this.gameManager = new GameManager(this);
         this.createEnvironment();
 
 
